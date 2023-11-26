@@ -26,9 +26,12 @@ public class Food {
     
     private Long id;
     private String title;
+    private Integer price;
+    private String image;
     
-//    public Food(){
-//        this.title = teste.title;
-//    }
-   
+    public Food(FoodRequestDTO date){
+        this.title = date.title();
+        this.image = date.image();
+        this.price = date.price();
+    }
 }
