@@ -3,6 +3,8 @@ package com.cardapio.cardapio.controller;
 import com.cardapio.cardapio.food.Food;
 import com.cardapio.cardapio.food.FoodRepository;
 import com.cardapio.cardapio.food.FoodRequestDTO;
+import com.cardapio.cardapio.food.FoodResponseDTO;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +30,13 @@ public class FoodController {
         Food foodData = new Food(data);
         repository.save(foodData);
         return;
+    }
+    
+    public List<FoodResponseDTO> getAll(){
+        
+        List<FoodResponseDTO> foodList = repository.findAll().stream().map(FoodResponseDTO::new).toList();
+        
+        return foodList;
     }
     
 }
